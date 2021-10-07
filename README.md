@@ -5,4 +5,4 @@ Bonus features include options for the user to record what they've created, as w
 
 Wireframe 
 
-![image](https://wireframe.cc/2N3usi)
+![alt text](https://wireframe.cc/2N3usi)
