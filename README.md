@@ -32,9 +32,13 @@ This project implements:
 # Implementation Timeline 
 
 Friday Afternoon & Weekend : compile research, begin skeleton rough draft 
+
 Monday : complete skeleton rough draft, outlining file structure, get comfortable with Canvas and Web Audio API 
+
 Tuesday : render shapes and colors to screen, attach sound to keys 
+
 Wednesday : focus on styling and begin bonus portions if time allows
+
 Thursday Morning : pack up and submit project
 
 # Bonus Features 
