@@ -5,4 +5,5 @@ Bonus features include options for the user to record what they've created, as w
 
 Wireframe 
 
-<img width="922" alt="Screen Shot 2021-10-07 at 5 20 58 PM" src="https://user-images.githubusercontent.com/88460822/136465897-1b1edd90-cfa8-422e-b112-7fa3b0b49720.png">
+
+<img width="799" alt="Screen Shot 2021-10-07 at 5 44 05 PM" src="https://user-images.githubusercontent.com/88460822/136466570-494b254b-dd2b-407d-bfe7-8510cbddd23d.png">
