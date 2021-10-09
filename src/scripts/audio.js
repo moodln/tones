@@ -1,15 +1,18 @@
 class Audio {
     constructor() {
+        // instantiate web audio api object 
         this.audioContext = new AudioContext();
-
+        // create gain node, gain corresponds with volume
         this.gainNode = this.audioContext.createGain();
-        this.gainNode.gain.setValueAtTime(0.05, 0);
+        this.gainNode.gain.setValueAtTime(0.07, 0);
+        // allows volume to descrease with time
+        this.gainNode.gain.exponentialRampToValueAtTime(0.001, this.audioContext.currentTime + 1.5);
 
 
     }
 
     createNotes(key) {
-
+        // C4 to C5 scale, attach frequencies to corresponding keyboard value
         const notes = {
             's': 261.63,
             'd': 293.66,
@@ -21,14 +24,21 @@ class Audio {
             'l': 523.25
         }
         
-
+        
         if (notes[key]) {
+            // oscillator corresponds with frequency, 
+            // create oscillator node to attach frequency from notes object
             let oscillator = this.audioContext.createOscillator();
             oscillator.frequency.setValueAtTime(notes[key], this.audioContext.currentTime);
+            // connect oscillator node to volume node
             oscillator.connect(this.gainNode)
+            // connect gain node to destination (speakers)
             this.gainNode.connect(this.audioContext.destination);
+
             oscillator.start(0);
-            oscillator.stop(this.audioContext.currentTime + 1)
+
+            // tone will play for one second 
+            oscillator.stop(this.audioContext.currentTime + 1.5)
         }
     }
 
