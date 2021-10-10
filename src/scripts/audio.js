@@ -2,9 +2,10 @@ class Audio {
     constructor() {
         // instantiate web audio api object 
         this.audioContext = new AudioContext();
+        this.buffer = this.audioContext.createBuffer(1, this.audioContext.sampleRate * 1, this.audioContext.sampleRate);
         // create gain node, gain corresponds with volume
         this.gainNode = this.audioContext.createGain();
-        this.gainNode.gain.setValueAtTime(0.07, 0);
+        this.gainNode.gain.setValueAtTime(0.08, 0);
         // allows volume to descrease with time
         this.gainNode.gain.exponentialRampToValueAtTime(0.001, this.audioContext.currentTime + 1.5);
 
@@ -42,13 +43,13 @@ class Audio {
                 this.gainNode.gain.setValueAtTime(0.03, this.audioContext.currentTime);
             }
             // connect oscillator node to volume node
-            oscillator.connect(this.gainNode)
+            oscillator.connect(this.gainNode);
             // connect gain node to destination (speakers)
             this.gainNode.connect(this.audioContext.destination);
 
             oscillator.start(0);
 
-            // tone will play for one second 
+            // tone will play for 1.5 seconds 
             oscillator.stop(this.audioContext.currentTime + 1.5)
         }
     }
