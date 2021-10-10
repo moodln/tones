@@ -56,6 +56,8 @@ class Audio {
             // lower gain for higher frequency notes
             if (this.notes[key] > 699) {
                 this.gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
+            } else if (this.notes[key] < 247) {
+                this.gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
             }
             // connect oscillator node to volume node
             oscillator.connect(this.gainNode);
