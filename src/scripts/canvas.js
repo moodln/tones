@@ -1,3 +1,5 @@
+/** @type {HTMLCanvasElement} */
+
 class Canvas {
     constructor(){
         let canvas = document.getElementById('canvas');
@@ -31,9 +33,6 @@ class Canvas {
             this.ctx.fillStyle = 'blue'
             this.ctx.stroke();
         }
-    }
-
-    touchDraw(e) {
         if (e.key === 'u') {
             this.ctx.beginPath();
             this.ctx.moveTo(125, 300);
@@ -49,8 +48,8 @@ class Canvas {
             this.ctx.fillStyle = 'pink'
             this.ctx.fill();
         }
-
     }
+
 
     removeDraw() {
         this.ctx.beginPath();

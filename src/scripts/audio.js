@@ -1,56 +1,71 @@
+// instantiate web audio api object 
+let audioContext = new AudioContext();
+
 class Audio {
     constructor() {
-        // instantiate web audio api object 
-        this.audioContext = new AudioContext();
-        this.buffer = this.audioContext.createBuffer(1, this.audioContext.sampleRate * 1, this.audioContext.sampleRate);
         // create gain node, gain corresponds with volume
-        this.gainNode = this.audioContext.createGain();
+        this.gainNode = audioContext.createGain();
         this.gainNode.gain.setValueAtTime(0.08, 0);
         // allows volume to descrease with time
-        this.gainNode.gain.exponentialRampToValueAtTime(0.001, this.audioContext.currentTime + 1.5);
+        this.gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.5);
+
+        // C3 to C5 scale, attach frequencies to corresponding keyboard value
+        this.notes = {
+            'z': 130.81,
+            'x': 146.83,
+            'c': 164.81,
+            'v': 174.61,
+            'b': 196.00,
+            'n': 220.00,
+            'm': 246.94,
+            'a': 261.63,
+            's': 293.66,
+            'd': 329.63,
+            'f': 349.23,
+            'g': 392.00,
+            'h': 440.00,
+            'j': 493.88,
+            'k': 523.25,
+            'l': 587.33,
+            'q': 659.25,
+            'w': 698.46,
+            'e': 783.99,
+            'r': 880.00,
+            't': 987.77,
+            'y': 1046.50,
+            'u': 1174.66,
+            'i': 1318.51,
+            'o': 1396.91,
+            'p': 1567.98,
+            '[': 1760.00,
+            ']': 1975.53,
+            '`': 2093.00
+        }
 
 
     }
 
     createNotes(key) {
-        // C4 to C5 scale, attach frequencies to corresponding keyboard value
-        const notes = {
-            's': 261.63,
-            'd': 293.66,
-            'f': 329.63,
-            'g': 349.23,
-            'h': 392.00,
-            'j': 440.00,
-            'k': 493.88,
-            'l': 523.25,
-            'e': 587.33,
-            'r': 659.25,
-            't': 698.46,
-            'y': 783.99,
-            'u': 880.00,
-            'i': 987.77,
-            'o': 1046.50,
-            'p': 1174.66
-        }
         
         
-        if (notes[key]) {
+        if (this.notes[key]) {
             // oscillator corresponds with frequency, 
             // create oscillator node to attach frequency from notes object
-            let oscillator = this.audioContext.createOscillator();
-            oscillator.frequency.setValueAtTime(notes[key], this.audioContext.currentTime);
-            if (notes[key] > 699) {
-                this.gainNode.gain.setValueAtTime(0.03, this.audioContext.currentTime);
+            let oscillator = audioContext.createOscillator();
+            oscillator.frequency.setValueAtTime(this.notes[key], audioContext.currentTime);
+            // lower gain for higher frequency notes
+            if (this.notes[key] > 699) {
+                this.gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
             }
             // connect oscillator node to volume node
             oscillator.connect(this.gainNode);
             // connect gain node to destination (speakers)
-            this.gainNode.connect(this.audioContext.destination);
+            this.gainNode.connect(audioContext.destination);
 
             oscillator.start(0);
 
             // tone will play for 1.5 seconds 
-            oscillator.stop(this.audioContext.currentTime + 1.5)
+            oscillator.stop(audioContext.currentTime + 1.5)
         }
     }
 

@@ -10,9 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('keydown', (e) => {
     const canvas = new Canvas();
-    canvas.touchDraw(e);
     canvas.draw(e);
-
+    // console.log(e.key);
 })
 
 document.addEventListener('keyup', setTimeout.bind(null, myFunc, 3000));
