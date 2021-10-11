@@ -4,7 +4,7 @@ const canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-const glittery = [];
+let glittery = [];
 
 const keyboardKeys = {
     x: undefined,
@@ -17,7 +17,7 @@ class Glitter {
         this.y = keyboardKeys.y;
         this.color = color;
         this.size = Math.random() * 4 + 1;
-        this.speedX = Math.random() * 2 - 1.5;
+        this.speedX = Math.random() * 3 - 1.5;
         this.speedY = Math.random() * 2 - 1.5;
     }
 
@@ -40,7 +40,8 @@ class Glitter {
 }
 
 function createGlitter(color) {
-    for (let i = 0; i < 100; i++) {
+    declutterGlitter();
+    for (let i = 0; i < 10; i++) {
         glittery.push(new Glitter(color));
     }
 }
@@ -50,6 +51,10 @@ function handleGlitter() {
         glittery[i].update();
         glittery[i].draw();
     }
+}
+
+function declutterGlitter() {
+    glittery = []
 }
 
 

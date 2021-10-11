@@ -26,7 +26,7 @@ document.addEventListener('keydown', (e) => {
     } else if (audio.notes[e.key] < 348) {
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width)
         keyboardKeys.y = Math.random() * (canvas.height - (canvas.height - 200)) + (canvas.height - 200)
-        color = 'rgb(91, 83, 207)'
+        color = 'rgb(91, 157, 207)'
     }
     
     createGlitter(color);
