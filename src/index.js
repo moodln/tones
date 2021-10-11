@@ -1,5 +1,5 @@
 
-import {canvas, keyboardKeys, drawCircle} from './scripts/canvas'
+import { canvas, keyboardKeys, Glitter, createGlitter, handleGlitter, animate} from './scripts/canvas'
 import Audio from './scripts/audio'
 
 
@@ -15,7 +15,7 @@ document.addEventListener('keydown', (e) => {
     const audio = new Audio();
     let color = 'pink'
     if (audio.notes[e.key] > 879) {
-        // random number between canvas.width/canvas.height and canvas.width - 200
+        // random number between canvas.width/canvas.height and canvas.width
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width)
         keyboardKeys.y = Math.random() * (canvas.height - 400 - (canvas.height - 600)) + (canvas.height - 600)
         color = 'rgb(243, 217, 100)';
@@ -29,7 +29,8 @@ document.addEventListener('keydown', (e) => {
         color = 'rgb(91, 83, 207)'
     }
     
-    drawCircle(color);
+    createGlitter(color);
+    animate();
 })
 
 
