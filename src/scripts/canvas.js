@@ -24,6 +24,7 @@ class Glitter {
     update() {
         this.x += this.speedX;
         this.y += this.speedY;
+        
     }
 
     draw() {
