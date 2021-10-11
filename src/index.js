@@ -2,6 +2,7 @@
 import Canvas from './scripts/canvas'
 import Audio from './scripts/audio'
 
+// const canvas = new Canvas();
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,8 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('keydown', (e) => {
     const canvas = new Canvas();
     canvas.draw(e);
-    // console.log(e.key);
+
 })
+
+// document.addEventListener('keyup' (e) => {
+//     const canvas = new Canvas();
+//     delete canvas.keys[e.key];
+// })
 
 document.addEventListener('keyup', setTimeout.bind(null, myFunc, 3000));
 

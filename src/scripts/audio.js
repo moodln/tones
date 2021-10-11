@@ -5,7 +5,7 @@ class Audio {
     constructor() {
         // create gain node, gain corresponds with volume
         this.gainNode = audioContext.createGain();
-        this.gainNode.gain.setValueAtTime(0.08, 0);
+        this.gainNode.gain.setValueAtTime(0.07, 0);
         // allows volume to descrease with time
         this.gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.5);
 
