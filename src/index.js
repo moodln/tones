@@ -1,5 +1,5 @@
 
-import { canvas, keyboardKeys, Glitter, createGlitter, handleGlitter, animate} from './scripts/canvas'
+import { canvas, keyboardKeys, createGlitter, animate} from './scripts/canvas'
 import Audio from './scripts/audio'
 
 
@@ -16,21 +16,23 @@ document.addEventListener('keydown', (e) => {
     let color = 'pink'
     if (audio.notes[e.key] > 879) {
         // random number between canvas.width/canvas.height and canvas.width
-        keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width)
-        keyboardKeys.y = Math.random() * (canvas.height - 400 - (canvas.height - 600)) + (canvas.height - 600)
+        keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
+        console.log(keyboardKeys.x);
+        keyboardKeys.y = Math.random() * (canvas.height - 400 - (canvas.height - 600)) + (canvas.height - 600);
         color = 'rgb(243, 217, 100)';
     } else if (audio.notes[e.key] > 348 && audio.notes[e.key] < 879) {
-        keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width)
-        keyboardKeys.y = Math.random() * ((canvas.height - 200) - (canvas.height - 400)) + (canvas.height - 400)
-        color = 'rgb(243, 157, 100)'
+        keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
+        keyboardKeys.y = Math.random() * ((canvas.height - 200) - (canvas.height - 400)) + (canvas.height - 400);
+        color = 'rgb(243, 157, 100)';
     } else if (audio.notes[e.key] < 348) {
-        keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width)
-        keyboardKeys.y = Math.random() * (canvas.height - (canvas.height - 200)) + (canvas.height - 200)
-        color = 'rgb(91, 157, 207)'
+        keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
+        keyboardKeys.y = Math.random() * (canvas.height - (canvas.height - 200)) + (canvas.height - 200);
+        color = 'rgb(91, 157, 207)';
     }
     
     createGlitter(color);
     animate();
+    
 })
 
 
