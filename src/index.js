@@ -3,8 +3,6 @@ import { canvas, keyboardKeys, createGlitter, animate} from './scripts/canvas'
 import Audio from './scripts/audio'
 
 
-
-
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -14,6 +12,7 @@ window.addEventListener('resize', () => {
 document.addEventListener('keydown', (e) => {
     const audio = new Audio();
     let color = 'pink'
+    // assign x, y coordinates and color based on frequency of note 
     if (audio.notes[e.key] > 879) {
         // random number between canvas.width/canvas.height and canvas.width
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
@@ -31,8 +30,7 @@ document.addEventListener('keydown', (e) => {
     }
     
     createGlitter(color);
-    animate();
-    
+    animate();  
 })
 
 

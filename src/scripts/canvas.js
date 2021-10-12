@@ -7,8 +7,8 @@ canvas.height = window.innerHeight;
 let glittery = [];
 let requestID = undefined;
 let backgroundColor = getComputedStyle(canvas).backgroundColor;
-// let bursts = [];
 
+// set keyboardKeys to undefined to begin with, will change value in index.js eventListener
 const keyboardKeys = {
     x: undefined,
     y: undefined
@@ -26,19 +26,16 @@ class Glitter {
 
     update() {
         // debugger
-        this.size += 0.5;
-        if (this.size >= 40 && this.color !== adjustColor(this.color)) {
+ 
+        this.size += 0.1;
+        console.log(this.size);
+        // when circle reaches certain size, gradually change color to blend in with background 
+        if (this.size >= 30) {
             this.color = adjustColor(this.color);
-        } else if (this.color === adjustColor(this.color)) {
-            
-            // glittery.splice(0, 1);
-            // this.color = 'rgb(243, 217, 100)';
-            // createGlitterBurst(this.color);
-            // burst();
-        }
+        } 
     }
 
-
+    // draw circle on canvas
     draw() {
         ctx.beginPath();
         // debugger
@@ -49,16 +46,17 @@ class Glitter {
 
 }
 
+// create instances of circle to later call methods on (allows for the option to have bursts)
 function createGlitter(color) {
     glittery.push(new Glitter(color));
-    console.log(glittery); 
+    // console.log(glittery); 
 }
 
 function handleGlitter() {
     // console.log(glittery);
     for (let i = 0; i < glittery.length; i++) {
         glittery[i].update();
-        console.log(glittery[i]);
+        // console.log(glittery[i]);
         glittery[i].draw();
 
     }
@@ -67,10 +65,12 @@ function handleGlitter() {
 function animate() {
     requestID = requestAnimationFrame(animate);
 
+    
     if (glittery.slice(-1)[0].color !== backgroundColor) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         handleGlitter();
     }
+    // if color of circle becomes background color, stop animation and remove circle instance from array
     else {
         // debugger
         cancelAnimationFrame(requestID);
@@ -82,20 +82,21 @@ function animate() {
 
 
 function adjustColor(color) {
-
+    // set variables pointing to different rgb values of background color
     let backgroundColorNumbers = backgroundColor.slice(4, backgroundColor.length - 1).split(', ');
     let backgroundRed = parseInt(backgroundColorNumbers[0]);
     let backgroundGreen = parseInt(backgroundColorNumbers[1]);
     let backgroundBlue = parseInt(backgroundColorNumbers[2]);
 
     if (color !== backgroundColor) {
-    
+    // set variables pointing to different rgb values of circle color
     let glitterColor = color.slice(4, color.length - 1);
     let colorNumbers = glitterColor.split(', ');
     let glitterRed = parseInt(colorNumbers[0]);
     let glitterGreen = parseInt(colorNumbers[1]);
     let glitterBlue = parseInt(colorNumbers[2]);
     
+    // increase or decrease color of circle, until color of circle becomes background color 
     while (glitterRed !== backgroundRed || glitterGreen !== backgroundGreen || glitterBlue !== backgroundBlue) {
         if (glitterRed > backgroundRed) {
             glitterRed -= 1;
