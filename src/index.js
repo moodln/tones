@@ -1,6 +1,7 @@
 
-import { canvas, keyboardKeys, createGlitter, animate} from './scripts/canvas'
+import {canvas, keyboardKeys, createGlitter, animate} from './scripts/canvas'
 import Audio from './scripts/audio'
+
 
 
 window.addEventListener('resize', () => {
@@ -8,6 +9,9 @@ window.addEventListener('resize', () => {
     canvas.height = window.innerHeight;
 })
 
+window.addEventListener('DOMContentLoaded', () => {
+    animate();
+})
 
 document.addEventListener('keydown', (e) => {
     const audio = new Audio();
@@ -26,11 +30,57 @@ document.addEventListener('keydown', (e) => {
     } else if (audio.notes[e.key] < 348) {
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
         keyboardKeys.y = Math.random() * (canvas.height - (canvas.height - 200)) + (canvas.height - 200);
-        color = 'rgb(91, 157, 207)';
+        color = colorAssignment(audio.notes[e.key]);
     }
     
-    createGlitter(color);
-    animate();  
+    createGlitter(color);   
+})
+
+
+function colorAssignment(frequency) {
+    let colors = [
+        'rgb(72,   61, 139)',
+        'rgb(25,   25, 112)',
+        'rgb(0,   128, 128)',
+        'rgb(70,  130, 180)',
+        'rgb(95,  158, 160)',
+        'rgb(100, 149, 237)',
+        'rgb(60,  179, 113)',
+        'rgb(106,  90, 205)',
+        'rgb(138,  43, 226)',
+        'rgb(218, 112, 214)',
+        'rgb(176, 196, 222)',
+        'rgb(138,  43, 226)',
+        'rgb(138,  43, 226)',
+        'rgb(138,  43, 226)',
+        'rgb(138,  43, 226)',
+        'rgb(138,  43, 226)',
+        'rgb(138,  43, 226)',
+        // 'rgb(85, 107, 47)',
+    ];
+    if (frequency <= 174.62) {
+        let i = Math.floor(Math.random() * (3 - 0) + 0);
+        // console.log(i);
+        return colors[i];
+    } else if (frequency < 262 && frequency > 174.62) {
+        let i = Math.floor(Math.random() * (4 - 3) + 3);
+        // console.log(i);
+        return colors[i];
+    } else if (frequency < 393 && frequency > 261) {
+        let i = Math.floor(Math.random() * (8 - 5) + 5);
+        // console.log(i);
+        return colors[i];
+    }
+}
+
+
+
+
+document.addEventListener('keydown', (e) => {
+    const audio = new Audio();
+    let key = e.key;
+    audio.createNotes(key);
+
 })
 
 
@@ -52,16 +102,6 @@ document.addEventListener('keydown', (e) => {
 //     const canvas = new Canvas();
 //     canvas.removeDraw();
 // }
-
-document.addEventListener('keydown', (e) => {
-    const audio = new Audio();
-    let key = e.key;
-    audio.createNotes(key);
-
-})
-
-
-
 
 
 
