@@ -2,8 +2,8 @@
 
 const canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth - 40;
-canvas.height = window.innerHeight - 40;
+canvas.width = window.innerWidth - 60;
+canvas.height = window.innerHeight - 60;
 
 let glittery = [];
 let requestID = undefined;

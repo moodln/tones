@@ -1,17 +1,29 @@
 
 import {canvas, keyboardKeys, createGlitter, animate} from './scripts/canvas'
 import Audio from './scripts/audio'
-
+const modal = document.getElementById('welcome');
+const closeModal = document.getElementsByClassName('close')[0];
 
 
 window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth - 40;
-    canvas.height = window.innerHeight - 40;
+    canvas.width = window.innerWidth - 30;
+    canvas.height = window.innerHeight - 30;
 })
 
 window.addEventListener('DOMContentLoaded', () => {
     animate();
+    modal.style.display = 'block';
 })
+
+closeModal.onclick = function() {
+    modal.style.display = 'none';
+}
+
+window.onclick = function(e) {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+}
 
 document.addEventListener('keydown', (e) => {
     const audio = new Audio();

@@ -2,18 +2,65 @@
 
 
 body {
-    // background-image: url('https://secure.img1-fg.wfcdn.com/im/64285359/resize-h445%5Ecompr-r85/6562/65622983/Perreault+Stucco+32.8%2527+L+x+20.5%2522+W+Wallpaper.jpg')
+    // background-image: url('../src/styles/images/background.png');
+    // background-size: contain;
+    // background-repeat: repeat;
+
+    
+    
 }
 
 #canvas {
     background: rgb(216, 227, 240);
+    // background-image: url('../src/styles/images/IMG_1630.jpg');
+    
 
-    // border: 1px dashed rgb(161, 175, 182); 
+    border: 1px dashed rgb(161, 175, 182); 
     border-radius: 3px;
     // padding: 20px; 
-    margin: 10px; 
+    margin: 20px; 
     float: left
     // width: 100%;
     // height: 100%;
     // margin: 50px;
+}
+
+.welcome {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color:rgba(233, 211, 178, 0.4);
+    background-image: url('../src/styles/images/background.png');
+    background-size: stretch;
+    // background-repeat: repeat;
+}
+
+.welcome-content {
+    background-color:rgb(216, 227, 240);
+    margin: 20% auto;
+    padding: 30px;
+    border: 1px solid rgb(123, 148, 180);
+    width: 60%;
+    color: rgb(78, 78, 74);
+    font-family: Andale Mono, monospace;
+    font-weight: bold;
+}
+
+.close {
+    color:rgb(161, 175, 182);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, 
+.close:focus {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
 }
