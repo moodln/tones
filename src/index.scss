@@ -1,11 +1,19 @@
 // @import './styles/example.scss';
 
 
+body {
+    // background-image: url('https://secure.img1-fg.wfcdn.com/im/64285359/resize-h445%5Ecompr-r85/6562/65622983/Perreault+Stucco+32.8%2527+L+x+20.5%2522+W+Wallpaper.jpg')
+}
+
 #canvas {
-    // position: absolute;
     background: rgb(216, 227, 240);
+
+    // border: 1px dashed rgb(161, 175, 182); 
+    border-radius: 3px;
+    // padding: 20px; 
+    margin: 10px; 
+    float: left
     // width: 100%;
     // height: 100%;
-    // top: 0;
-    // left: 0;
+    // margin: 50px;
 }

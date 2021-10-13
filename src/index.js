@@ -5,8 +5,8 @@ import Audio from './scripts/audio'
 
 
 window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth - 40;
+    canvas.height = window.innerHeight - 40;
 })
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -89,7 +89,7 @@ function colorAssignment(frequency) {
         let i = Math.floor(Math.random() * (17 - 12) + 12);
         return colors[i];
     } else if (frequency <= 1318.51 && frequency > 880) {
-        let i = Math.floor(Math.random() * (20 - 18) + 18);
+        let i = Math.floor(Math.random() * (23 - 18) + 18);
         return colors[i];
     } else if (frequency <= 2093 && frequency > 987.77) {
         let i = Math.floor(Math.random() * (23 - 21) + 21)
