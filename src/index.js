@@ -22,11 +22,11 @@ document.addEventListener('keydown', (e) => {
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
         console.log(keyboardKeys.x);
         keyboardKeys.y = Math.random() * (canvas.height - 400 - (canvas.height - 600)) + (canvas.height - 600);
-        color = 'rgb(243, 217, 100)';
+        color = colorAssignment(audio.notes[e.key]);
     } else if (audio.notes[e.key] > 348 && audio.notes[e.key] < 879) {
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
         keyboardKeys.y = Math.random() * ((canvas.height - 200) - (canvas.height - 400)) + (canvas.height - 400);
-        color = 'rgb(243, 157, 100)';
+        color = colorAssignment(audio.notes[e.key]);
     } else if (audio.notes[e.key] < 348) {
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
         keyboardKeys.y = Math.random() * (canvas.height - (canvas.height - 200)) + (canvas.height - 200);
@@ -45,30 +45,54 @@ function colorAssignment(frequency) {
         'rgb(70,  130, 180)',
         'rgb(95,  158, 160)',
         'rgb(100, 149, 237)',
-        'rgb(60,  179, 113)',
+        'rgb(75,    0, 130)',
         'rgb(106,  90, 205)',
         'rgb(138,  43, 226)',
-        'rgb(218, 112, 214)',
+        'rgb(165,  42,  42)',
         'rgb(176, 196, 222)',
-        'rgb(138,  43, 226)',
-        'rgb(138,  43, 226)',
-        'rgb(138,  43, 226)',
-        'rgb(138,  43, 226)',
-        'rgb(138,  43, 226)',
-        'rgb(138,  43, 226)',
+        'rgb(205,  92,  92)',
+        'rgb(178,  34,  34)',
+        'rgb(222, 184, 135)',
+        'rgb(219, 112, 147)',
+        'rgb(221, 160, 221)',
+        'rgb(216, 191, 216)',
+        'rgb(209, 147,  92)',
+        'rgb(238, 147,  58)',
+        'rgb(243, 198, 119)',
+        'rgb(243, 166, 109)',
+        'rgb(209, 184, 129)',
+        'rgb(244, 240, 187)',
+        'rgb(241, 216, 171)',
+        'rgb(255, 228, 225)',
+        'rgb(253, 245, 230)',
+        'rgb(255, 235, 205)',
+        'rgb(255, 250, 250)'
+    
         // 'rgb(85, 107, 47)',
     ];
-    if (frequency <= 174.62) {
+    if (frequency <= 174.61) {
         let i = Math.floor(Math.random() * (3 - 0) + 0);
         // console.log(i);
         return colors[i];
-    } else if (frequency < 262 && frequency > 174.62) {
-        let i = Math.floor(Math.random() * (4 - 3) + 3);
+    } else if (frequency <= 261.63 && frequency > 174.61) {
+        let i = Math.floor(Math.random() * (4 - 2) + 2);
         // console.log(i);
         return colors[i];
-    } else if (frequency < 393 && frequency > 261) {
+    } else if (frequency <= 392 && frequency > 261) {
         let i = Math.floor(Math.random() * (8 - 5) + 5);
         // console.log(i);
+        return colors[i];
+    } else if (frequency <= 587.33 && frequency > 392) {
+        let i = Math.floor(Math.random() * (12 - 9) + 9);
+        return colors[i];
+    } else if (frequency <= 880 && frequency > 587.33) {
+        let i = Math.floor(Math.random() * (17 - 12) + 12);
+        return colors[i];
+    } else if (frequency <= 1318.51 && frequency > 880) {
+        let i = Math.floor(Math.random() * (20 - 18) + 18);
+        return colors[i];
+    } else if (frequency <= 2093 && frequency > 987.77) {
+        let i = Math.floor(Math.random() * (23 - 21) + 21)
         return colors[i];
     }
 }

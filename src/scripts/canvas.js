@@ -31,7 +31,9 @@ class Glitter {
         this.size += 0.1;
         // console.log(this.size);
         // when circle reaches certain size, gradually change color to blend in with background 
-        if (this.size >= 30) {
+        let randomSizeNum = Math.floor(Math.random() * (50 - 5) + 5);
+        console.log(randomSizeNum);
+        if (this.size >= randomSizeNum) {
             this.color = adjustColor(this.color);
             // debugger
         }
