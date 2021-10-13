@@ -143,7 +143,9 @@ function adjustColor(color) {
         return color;
     }
     } else {
-        if (glittery.length > 50) {
+        if (glittery.length > 50 && glittery.slice(-1)[0].color === backgroundColor) {
+            glittery.splice(0, 1);
+        } else if (glittery.length >= 75 && glittery.slice(-1)[0].color === backgroundColor){
             glittery.splice(0, 1);
         }
         // console.log(glittery);

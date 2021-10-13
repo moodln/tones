@@ -6,6 +6,10 @@ body {
   font-weight: bold;
 }
 
+p {
+  margin: 0px 0px 2px 20px;
+}
+
 body > a {
   float: right;
   top: 0;
@@ -16,7 +20,7 @@ body > a {
   background: #d8e3f0;
   border: 1px dashed #a1afb6;
   border-radius: 3px;
-  margin: 20px 20px 0px 20px;
+  margin: 0px 20px 0px 20px;
   float: left;
 }
 
