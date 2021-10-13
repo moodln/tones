@@ -46,16 +46,17 @@ class Audio {
     }
 
     createNotes(key) {
-        
-        
+          
         if (this.notes[key]) {
             // oscillator corresponds with frequency, 
             // create oscillator node to attach frequency from notes object
             let oscillator = audioContext.createOscillator();
             oscillator.frequency.setValueAtTime(this.notes[key], audioContext.currentTime);
+
             // lower gain for higher frequency notes
             if (this.notes[key] > 699) {
                 this.gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
+            // higher gain for lower frequency
             } else if (this.notes[key] < 247) {
                 this.gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
             }
@@ -69,6 +70,37 @@ class Audio {
             // tone will play for 1.5 seconds 
             oscillator.stop(audioContext.currentTime + 1.5)
         }
+    }
+
+    // create sustain pedal when user presses on space bar
+    sustainPedal(key) { 
+
+        if (this.notes[key]) {
+
+            let oscillator = audioContext.createOscillator();
+            oscillator.frequency.setValueAtTime(this.notes[key], audioContext.currentTime);
+
+            // lower gain for sustain pedal
+            this.gainNode.gain.setValueAtTime(0.06, 0);
+            this.gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 5)
+
+            if (this.notes[key] > 699) {
+                this.gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
+            } else if (this.notes[key] < 247) {
+                this.gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            }
+            // connect oscillator node to volume node
+            oscillator.connect(this.gainNode);
+            // connect gain node to destination (speakers)
+            this.gainNode.connect(audioContext.destination);
+
+            oscillator.start(0);
+
+            // tone will play for 1.5 seconds 
+            oscillator.stop(audioContext.currentTime + 5)
+
+        }
+
     }
 
 

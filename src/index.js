@@ -6,8 +6,8 @@ const closeModal = document.getElementsByClassName('close')[0];
 
 
 window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth - 30;
-    canvas.height = window.innerHeight - 30;
+    canvas.width = window.innerWidth - 60;
+    canvas.height = window.innerHeight - 60;
 })
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +25,7 @@ window.onclick = function(e) {
     }
 }
 
+// event listener for shapes to appear
 document.addEventListener('keydown', (e) => {
     const audio = new Audio();
     let color = 'pink'
@@ -32,7 +33,7 @@ document.addEventListener('keydown', (e) => {
     if (audio.notes[e.key] > 879) {
         // random number between canvas.width/canvas.height and canvas.width
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
-        console.log(keyboardKeys.x);
+        // console.log(keyboardKeys.x);
         keyboardKeys.y = Math.random() * (canvas.height - 400 - (canvas.height - 600)) + (canvas.height - 600);
         color = colorAssignment(audio.notes[e.key]);
     } else if (audio.notes[e.key] > 348 && audio.notes[e.key] < 879) {
@@ -111,33 +112,24 @@ function colorAssignment(frequency) {
 
 
 
-
+// event listener for sound 
 document.addEventListener('keydown', (e) => {
     const audio = new Audio();
-    let key = e.key;
-    audio.createNotes(key);
-
+    
+    audio.createNotes(e.key);
+    
 })
 
 
 
-// document.addEventListener('keydown', (e) => {
-//     const canvas = new Canvas();
-//     canvas.draw(e);
+document.addEventListener('keydown', (e) => {
+    const audio = new Audio();
+    if (e.code === 'Space') {
+        audio.sustainPedal(e.key);
+    }
+})
 
-// })
 
-// document.addEventListener('keyup' (e) => {
-//     const canvas = new Canvas();
-//     delete canvas.keys[e.key];
-// })
-
-// document.addEventListener('keyup', setTimeout.bind(null, myFunc, 3000));
-
-// function myFunc() {
-//     const canvas = new Canvas();
-//     canvas.removeDraw();
-// }
 
 
 
