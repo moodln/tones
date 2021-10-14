@@ -1,7 +1,7 @@
 
 import {canvas, keyboardKeys, createGlitter, animate} from './scripts/canvas'
 import {Audio, keys} from './scripts/audio'
-// import {keys} from './scripts/audio'
+
 const modal = document.getElementById('welcome');
 const closeModal = document.getElementsByClassName('close')[0];
 const anyKey = document.getElementById('anyKey');
@@ -40,7 +40,6 @@ document.addEventListener('keydown', (e) => {
     if (audio.notes[e.key] > 879) {
         // random number between canvas.width/canvas.height and canvas.width
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
-        // console.log(keyboardKeys.x);
         keyboardKeys.y = Math.random() * (canvas.height - 400 - (canvas.height - 600)) + (canvas.height - 600);
         color = colorAssignment(audio.notes[e.key]);
     } else if (audio.notes[e.key] > 348 && audio.notes[e.key] < 879) {
@@ -87,20 +86,16 @@ function colorAssignment(frequency) {
         'rgb(253, 245, 230)',
         'rgb(255, 235, 205)',
         'rgb(255, 250, 250)'
-    
-        // 'rgb(85, 107, 47)',
     ];
+
     if (frequency <= 174.61) {
         let i = Math.floor(Math.random() * (3 - 0) + 0);
-        // console.log(i);
         return colors[i];
     } else if (frequency <= 261.63 && frequency > 174.61) {
         let i = Math.floor(Math.random() * (4 - 2) + 2);
-        // console.log(i);
         return colors[i];
     } else if (frequency <= 392 && frequency > 261) {
         let i = Math.floor(Math.random() * (8 - 5) + 5);
-        // console.log(i);
         return colors[i];
     } else if (frequency <= 587.33 && frequency > 392) {
         let i = Math.floor(Math.random() * (12 - 9) + 9);
@@ -132,24 +127,12 @@ document.addEventListener('keydown', (e) => {
 })
 
 
-
-// document.addEventListener('keydown', (e) => {
-//     const audio = new Audio();
-//     keys.push(e.key);
-
-//     if (e.code === 'Space') {
-//         audio.sustainPedal(keys);
-        
-//         console.log(keys);
-//     }
-// })
-
+// stops sustain pedal
 document.addEventListener('keyup', (e) => {
     const audio = new Audio();
     if (e.code === 'Space') {
         keys.sustain = false;
-    }
-    
+    }   
 })
 
 

@@ -10,9 +10,6 @@ class Audio {
         this.gainNode = audioContext.createGain();
         this.gainNode.gain.setValueAtTime(0.08, 0);
         
-    
-        // this.sustain = false;
-        
 
         // C3 to C5 scale, attach frequencies to corresponding keyboard value
         this.notes = {
@@ -46,7 +43,6 @@ class Audio {
             ']': 1975.53,
             '`': 2093.00
         }
-
 
     }
 
@@ -87,17 +83,12 @@ class Audio {
 
     // create sustain pedal when user presses on space bar
     sustainPedal(key) { 
-        let i = 0;
-        // if (this.sustain === true) {
-            // while (i < keys.length) {
 
                 if (this.notes[key]) {
 
                     let oscillator = audioContext.createOscillator();
                     oscillator.frequency.setValueAtTime(this.notes[key], audioContext.currentTime);
 
-                    // // lower gain for sustain pedal
-                    // this.gainNode.gain.setValueAtTime(0.07, 0);
                     this.gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 5)
 
                     if (this.notes[key] > 699) {
@@ -112,13 +103,10 @@ class Audio {
 
                     oscillator.start(0);
 
-                    // tone will play for 1.5 seconds 
+                    // tone will play for 5 seconds 
                     oscillator.stop(audioContext.currentTime + 5)
 
                 }
-                // i += 1;
-            // }
-        // }
 
     }
 

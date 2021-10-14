@@ -6,7 +6,6 @@ canvas.width = window.innerWidth - 60;
 canvas.height = window.innerHeight - 60;
 
 let glittery = [];
-let requestID = undefined;
 let backgroundColor = getComputedStyle(canvas).backgroundColor;
 
 // set keyboardKeys to undefined to begin with, will change value in index.js eventListener
@@ -26,27 +25,21 @@ class Glitter {
     }
 
     update() {
-        // debugger
         
         this.size += 0.1;
-        // console.log(this.size);
+    
         // when circle reaches certain size, gradually change color to blend in with background 
         let randomSizeNum = Math.floor(Math.random() * (50 - 5) + 5);
-        // console.log(randomSizeNum);
+        
         if (this.size >= randomSizeNum) {
             this.color = adjustColor(this.color);
-            // debugger
+           
         }
-        // } else if (this.color === backgroundColor) {
-        //     glittery.splice(0, 1);
-        //     console.log(glittery);
-        // }
     }
 
     // draw circle on canvas
     draw() {
         ctx.beginPath();
-        // debugger
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
         ctx.fill();
@@ -57,43 +50,22 @@ class Glitter {
 // create instances of circle to later call methods on (allows for the option to have bursts)
 function createGlitter(color) {
     glittery.push(new Glitter(color));
-    // console.log(glittery); 
 }
 
 function handleGlitter() {
-    // console.log(glittery);
-    // debugger
+
     for (let i = 0; i < glittery.length; i++) {
         glittery[i].update();
-        // console.log(glittery[i]);
         glittery[i].draw();
-
     }
 }
 
 function animate(timestamp) {
     const t = timestamp;
-    // debugger
     
     handleGlitter();
 
     requestAnimationFrame(animate);
-    
-    // if (glittery.slice(-1)[0].color !== backgroundColor) {
-    //     // debugger
-    //     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //     handleGlitter();
-    //     requestID = requestAnimationFrame(animate);
-       
-    // }
-    // // if color of circle becomes background color, stop animation and remove circle instance from array
-    // else {
-    //     // debugger
-    //     cancelAnimationFrame(requestID);
-    //     glittery.splice(0, 1);
-    //     // debugger
-    // }
-    
 }
 
 
@@ -135,20 +107,17 @@ function adjustColor(color) {
         } else {
             glitterBlue; 
         }
-        // console.log(glitterRed)
-        // console.log(glitterBlue)
-        // console.log(glitterGreen)
+
         color = `rgb(${glitterRed}, ${glitterGreen}, ${glitterBlue})`;
-        // debugger
         return color;
     }
+    // decluttering the glittery array
     } else {
         if (glittery.length > 50 && glittery.slice(-1)[0].color === backgroundColor) {
             glittery.splice(0, 1);
         } else if (glittery.length >= 75 && glittery.slice(-1)[0].color === backgroundColor){
             glittery.splice(0, 1);
         }
-        // console.log(glittery);
         return color;
     }
 

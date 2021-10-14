@@ -1,3 +1,7 @@
+// saved for future optimization (add filters to color display)
+
+
+
 // function createGlitterBurst(color) {
 //     declutterGlitterBurst();
 //     for (let i = 0; i < 50; i++) {
