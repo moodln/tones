@@ -8,7 +8,7 @@ class Audio {
     constructor() {
         // create gain node, gain corresponds with volume
         this.gainNode = audioContext.createGain();
-        this.gainNode.gain.setValueAtTime(0.07, 0);
+        this.gainNode.gain.setValueAtTime(0.08, 0);
         
     
         // this.sustain = false;
@@ -65,7 +65,7 @@ class Audio {
                 this.gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 1.5);
             // higher gain for lower frequency
             } else if (this.notes[key] < 247) {
-                this.gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                this.gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
             }
 
             // allows volume to descrease with time
@@ -96,14 +96,14 @@ class Audio {
                     let oscillator = audioContext.createOscillator();
                     oscillator.frequency.setValueAtTime(this.notes[key], audioContext.currentTime);
 
-                    // lower gain for sustain pedal
-                    this.gainNode.gain.setValueAtTime(0.06, 0);
+                    // // lower gain for sustain pedal
+                    // this.gainNode.gain.setValueAtTime(0.07, 0);
                     this.gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 5)
 
                     if (this.notes[key] > 699) {
-                        this.gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
+                        this.gainNode.gain.setValueAtTime(0.02, audioContext.currentTime);
                     } else if (this.notes[key] < 247) {
-                        this.gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                        this.gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
                     }
                     // connect oscillator node to volume node
                     oscillator.connect(this.gainNode);
