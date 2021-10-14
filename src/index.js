@@ -1,8 +1,10 @@
 
 import {canvas, keyboardKeys, createGlitter, animate} from './scripts/canvas'
-import Audio from './scripts/audio'
+import {Audio, keys} from './scripts/audio'
+// import {keys} from './scripts/audio'
 const modal = document.getElementById('welcome');
 const closeModal = document.getElementsByClassName('close')[0];
+const anyKey = document.getElementById('anyKey');
 
 
 window.addEventListener('resize', () => {
@@ -17,6 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 closeModal.onclick = function() {
     modal.style.display = 'none';
+
 }
 
 window.onclick = function(e) {
@@ -28,6 +31,10 @@ window.onclick = function(e) {
 // event listener for shapes to appear
 document.addEventListener('keydown', (e) => {
     const audio = new Audio();
+
+    anyKey.style.display = 'none'
+    canvas.style.margin = '20px 20px 0px 20px'
+
     let color = 'pink'
     // assign x, y coordinates and color based on frequency of note 
     if (audio.notes[e.key] > 879) {
@@ -117,17 +124,27 @@ document.addEventListener('keydown', (e) => {
     const audio = new Audio();
     
     audio.createNotes(e.key);
+    console.log(keys);
     
 })
 
 
 
-document.addEventListener('keydown', (e) => {
-    const audio = new Audio();
-    if (e.code === 'Space') {
-        audio.sustainPedal(e.key);
-    }
-})
+// document.addEventListener('keydown', (e) => {
+//     const audio = new Audio();
+//     keys.push(e.key);
+
+//     if (e.code === 'Space') {
+//         audio.sustainPedal(keys);
+        
+//         console.log(keys);
+//     }
+// })
+
+// document.addEventListener('keyup', (e) => {
+//     const audio = new Audio();
+//     audio.sustain = false;
+// })
 
 
 

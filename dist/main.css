@@ -8,6 +8,8 @@ body {
 
 p {
   margin: 0px 0px 2px 20px;
+  visibility: visible;
+  opacity: 1;
 }
 
 body > a {
@@ -54,6 +56,10 @@ body > a {
   float: right;
   font-size: 28px;
   font-weight: bold;
+}
+
+a {
+  color: #b49264;
 }
 
 .footer {

@@ -1,13 +1,16 @@
 // instantiate web audio api object 
 let audioContext = new AudioContext();
+let keys = [];
 
 class Audio {
     constructor() {
         // create gain node, gain corresponds with volume
         this.gainNode = audioContext.createGain();
         this.gainNode.gain.setValueAtTime(0.07, 0);
-        // allows volume to descrease with time
-        this.gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.5);
+        
+    
+        this.sustain = false;
+        
 
         // C3 to C5 scale, attach frequencies to corresponding keyboard value
         this.notes = {
@@ -55,11 +58,16 @@ class Audio {
 
             // lower gain for higher frequency notes
             if (this.notes[key] > 699) {
-                this.gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
+                this.gainNode.gain.setValueAtTime(0.02, audioContext.currentTime);
+                this.gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 1.5);
             // higher gain for lower frequency
             } else if (this.notes[key] < 247) {
                 this.gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
             }
+
+            // allows volume to descrease with time
+            this.gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.5);
+
             // connect oscillator node to volume node
             oscillator.connect(this.gainNode);
             // connect gain node to destination (speakers)
@@ -73,37 +81,43 @@ class Audio {
     }
 
     // create sustain pedal when user presses on space bar
-    sustainPedal(key) { 
+    sustainPedal(keys) { 
+        let i = 0;
+        // if (this.sustain === true) {
+            while (i < keys.length) {
 
-        if (this.notes[key]) {
+                if (this.notes[keys[i]]) {
 
-            let oscillator = audioContext.createOscillator();
-            oscillator.frequency.setValueAtTime(this.notes[key], audioContext.currentTime);
+                    let oscillator = audioContext.createOscillator();
+                    oscillator.frequency.setValueAtTime(this.notes[keys[i]], audioContext.currentTime);
 
-            // lower gain for sustain pedal
-            this.gainNode.gain.setValueAtTime(0.06, 0);
-            this.gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 5)
+                    // lower gain for sustain pedal
+                    this.gainNode.gain.setValueAtTime(0.06, 0);
+                    this.gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 5)
 
-            if (this.notes[key] > 699) {
-                this.gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
-            } else if (this.notes[key] < 247) {
-                this.gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    if (this.notes[keys[i]] > 699) {
+                        this.gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
+                    } else if (this.notes[keys[i]] < 247) {
+                        this.gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    }
+                    // connect oscillator node to volume node
+                    oscillator.connect(this.gainNode);
+                    // connect gain node to destination (speakers)
+                    this.gainNode.connect(audioContext.destination);
+
+                    oscillator.start(0);
+
+                    // tone will play for 1.5 seconds 
+                    oscillator.stop(audioContext.currentTime + 5)
+
+                }
+                i += 1;
             }
-            // connect oscillator node to volume node
-            oscillator.connect(this.gainNode);
-            // connect gain node to destination (speakers)
-            this.gainNode.connect(audioContext.destination);
-
-            oscillator.start(0);
-
-            // tone will play for 1.5 seconds 
-            oscillator.stop(audioContext.currentTime + 5)
-
-        }
+        // }
 
     }
 
 
 }
 
-export default Audio;
+export {Audio, keys};
