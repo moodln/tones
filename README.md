@@ -33,11 +33,11 @@ This project implements:
 
 Friday Afternoon & Weekend : compile research, begin skeleton rough draft 
 
-Monday : complete skeleton rough draft, outlining file structure, get comfortable with Canvas and Web Audio API 
+Monday : complete skeleton rough draft, outlining file structure, get comfortable with Canvas and Web Audio API, attach sound to keys 
 
-Tuesday : render shapes and colors to screen, attach sound to keys 
+Tuesday : render shapes and colors to screen 
 
-Wednesday : focus on styling and begin bonus portions if time allows
+Wednesday : create sustain pedal, focus on styling and begin bonus portions if time allows
 
 Thursday Morning : pack up and submit project
 
@@ -45,3 +45,4 @@ Thursday Morning : pack up and submit project
 
 - add recording functionailty
 - create new color schemes and patterns to choose from 
+- add touch event listeners to allow for interaction on a user's phone 

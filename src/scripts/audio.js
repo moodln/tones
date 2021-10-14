@@ -89,12 +89,12 @@ class Audio {
                     let oscillator = audioContext.createOscillator();
                     oscillator.frequency.setValueAtTime(this.notes[key], audioContext.currentTime);
 
-                    this.gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 5)
+                    this.gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 6)
 
                     if (this.notes[key] > 699) {
                         this.gainNode.gain.setValueAtTime(0.02, audioContext.currentTime);
                     } else if (this.notes[key] < 247) {
-                        this.gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                        this.gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
                     }
                     // connect oscillator node to volume node
                     oscillator.connect(this.gainNode);
@@ -104,7 +104,7 @@ class Audio {
                     oscillator.start(0);
 
                     // tone will play for 5 seconds 
-                    oscillator.stop(audioContext.currentTime + 5)
+                    oscillator.stop(audioContext.currentTime + 6)
 
                 }
 

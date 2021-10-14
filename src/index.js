@@ -6,11 +6,50 @@ const modal = document.getElementById('welcome');
 const closeModal = document.getElementsByClassName('close')[0];
 const anyKey = document.getElementById('anyKey');
 
+// working on touch screen functionality
+function startup() {
+    animate();
+    modal.style.display = 'block';
+    canvas.addEventListener('touchend', handleEnd, false);
+    canvas.addEventListener('touchcancel', handleCancel, false);
+    canvas.addEventListener('touchmove', handleMove, false);
+}
+
+canvas.onclick = function(e) {
+    if (e.target !== modal)
+    anyKey.style.display = 'none';
+    canvas.style.margin = '20px 20px 0px 20px';
+
+    let color = 'pink';
+    console.log(e.clientX);
+    keyboardKeys.x = e.clientX;
+    keyboardKeys.y = e.clientY;
+
+    createGlitter(color);
+}
+
+function handleEnd() {
+
+}
+
+function handleCancel() {
+
+}
+
+function handleMove() {
+
+}
+
 
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth - 60;
     canvas.height = window.innerHeight - 60;
 })
+
+// window.addEventListener('DOMContentLoaded', () => {
+//     animate();
+//     modal.style.display = 'block';
+// })
 
 window.addEventListener('DOMContentLoaded', () => {
     animate();

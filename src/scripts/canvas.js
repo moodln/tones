@@ -53,15 +53,13 @@ function createGlitter(color) {
 }
 
 function handleGlitter() {
-
     for (let i = 0; i < glittery.length; i++) {
         glittery[i].update();
         glittery[i].draw();
     }
 }
 
-function animate(timestamp) {
-    const t = timestamp;
+function animate() {
     
     handleGlitter();
 
