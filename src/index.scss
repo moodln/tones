@@ -77,6 +77,10 @@ body > a {
     
 }
 
+.welcome-content > p {
+    
+}
+
 .close {
     color:rgb(161, 175, 182);
     float: right;
@@ -104,7 +108,7 @@ a {
 
 .footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 // .child {
