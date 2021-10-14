@@ -1,6 +1,8 @@
 // instantiate web audio api object 
 let audioContext = new AudioContext();
-let keys = [];
+let keys = {
+    sustain: false
+}
 
 class Audio {
     constructor() {
@@ -9,7 +11,7 @@ class Audio {
         this.gainNode.gain.setValueAtTime(0.07, 0);
         
     
-        this.sustain = false;
+        // this.sustain = false;
         
 
         // C3 to C5 scale, attach frequencies to corresponding keyboard value
@@ -48,9 +50,10 @@ class Audio {
 
     }
 
-    createNotes(key) {
-          
-        if (this.notes[key]) {
+    playNotes(key) {
+        
+        
+        if (keys.sustain === false && this.notes[key]) {
             // oscillator corresponds with frequency, 
             // create oscillator node to attach frequency from notes object
             let oscillator = audioContext.createOscillator();
@@ -77,27 +80,29 @@ class Audio {
 
             // tone will play for 1.5 seconds 
             oscillator.stop(audioContext.currentTime + 1.5)
+        } else {
+            this.sustainPedal(key);
         }
     }
 
     // create sustain pedal when user presses on space bar
-    sustainPedal(keys) { 
+    sustainPedal(key) { 
         let i = 0;
         // if (this.sustain === true) {
-            while (i < keys.length) {
+            // while (i < keys.length) {
 
-                if (this.notes[keys[i]]) {
+                if (this.notes[key]) {
 
                     let oscillator = audioContext.createOscillator();
-                    oscillator.frequency.setValueAtTime(this.notes[keys[i]], audioContext.currentTime);
+                    oscillator.frequency.setValueAtTime(this.notes[key], audioContext.currentTime);
 
                     // lower gain for sustain pedal
                     this.gainNode.gain.setValueAtTime(0.06, 0);
-                    this.gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 5)
+                    this.gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 5)
 
-                    if (this.notes[keys[i]] > 699) {
+                    if (this.notes[key] > 699) {
                         this.gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
-                    } else if (this.notes[keys[i]] < 247) {
+                    } else if (this.notes[key] < 247) {
                         this.gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
                     }
                     // connect oscillator node to volume node
@@ -111,8 +116,8 @@ class Audio {
                     oscillator.stop(audioContext.currentTime + 5)
 
                 }
-                i += 1;
-            }
+                // i += 1;
+            // }
         // }
 
     }

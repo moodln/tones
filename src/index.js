@@ -122,9 +122,12 @@ function colorAssignment(frequency) {
 // event listener for sound 
 document.addEventListener('keydown', (e) => {
     const audio = new Audio();
-    
-    audio.createNotes(e.key);
-    console.log(keys);
+    if (e.code === 'Space') {
+        keys.sustain = true;
+    }
+    console.log(keys.sustain);
+    audio.playNotes(e.key);
+    console.log(e.code);
     
 })
 
@@ -141,10 +144,13 @@ document.addEventListener('keydown', (e) => {
 //     }
 // })
 
-// document.addEventListener('keyup', (e) => {
-//     const audio = new Audio();
-//     audio.sustain = false;
-// })
+document.addEventListener('keyup', (e) => {
+    const audio = new Audio();
+    if (e.code === 'Space') {
+        keys.sustain = false;
+    }
+    
+})
 
 
 
