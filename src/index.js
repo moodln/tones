@@ -7,38 +7,42 @@ const closeModal = document.getElementsByClassName('close')[0];
 const anyKey = document.getElementById('anyKey');
 
 // working on touch screen functionality
-function startup() {
-    animate();
-    modal.style.display = 'block';
-    canvas.addEventListener('touchend', handleEnd, false);
-    canvas.addEventListener('touchcancel', handleCancel, false);
-    canvas.addEventListener('touchmove', handleMove, false);
-}
+// function startup() {
+//     animate();
+//     modal.style.display = 'block';
+//     canvas.addEventListener('touchend', handleEnd, false);
+//     canvas.addEventListener('touchcancel', handleCancel, false);
+//     canvas.addEventListener('touchmove', handleMove, false);
+// }
 
-canvas.onclick = function(e) {
-    if (e.target !== modal)
-    anyKey.style.display = 'none';
-    canvas.style.margin = '20px 20px 0px 20px';
+// canvas.onclick = function(e) {
+//     if (e.target !== modal)
+//     anyKey.style.display = 'none';
+//     canvas.style.margin = '20px 20px 0px 20px';
 
-    let color = 'pink';
-    console.log(e.clientX);
-    keyboardKeys.x = e.clientX;
-    keyboardKeys.y = e.clientY;
+//     let color = 'pink';
 
-    createGlitter(color);
-}
+//     // console.log(e.clientX);
+//     console.log(e.clientY);
+//     // left-right (0-width (left on page is lower in number than right on page))
+//     keyboardKeys.x = e.clientX;
+//     // up-down (0 - height (higher on page = lower in number))
+//     keyboardKeys.y = e.clientY;
 
-function handleEnd() {
+//     createGlitter(color);
+// }
 
-}
+// function handleEnd() {
 
-function handleCancel() {
+// }
 
-}
+// function handleCancel() {
 
-function handleMove() {
+// }
 
-}
+// function handleMove() {
+
+// }
 
 
 window.addEventListener('resize', () => {
@@ -46,10 +50,6 @@ window.addEventListener('resize', () => {
     canvas.height = window.innerHeight - 60;
 })
 
-// window.addEventListener('DOMContentLoaded', () => {
-//     animate();
-//     modal.style.display = 'block';
-// })
 
 window.addEventListener('DOMContentLoaded', () => {
     animate();
@@ -77,9 +77,11 @@ document.addEventListener('keydown', (e) => {
     let color = 'pink'
     // assign x, y coordinates and color based on frequency of note 
     if (audio.notes[e.key] > 879) {
+        console.log(canvas.height)
+        console.log(canvas.width)
         // random number between canvas.width/canvas.height and canvas.width
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
-        keyboardKeys.y = Math.random() * (canvas.height - 400 - (canvas.height - 600)) + (canvas.height - 600);
+        keyboardKeys.y = Math.random() * (canvas.height - 400 - (canvas.height - canvas.height)) + (canvas.height - canvas.height);
         color = colorAssignment(audio.notes[e.key]);
     } else if (audio.notes[e.key] > 348 && audio.notes[e.key] < 879) {
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
@@ -155,14 +157,15 @@ function colorAssignment(frequency) {
 
 // event listener for sound 
 document.addEventListener('keydown', (e) => {
-    const audio = new Audio();
-    if (e.code === 'Space') {
-        keys.sustain = true;
+    if (modal.style.display = 'none') {
+        const audio = new Audio();
+        if (e.code === 'Space') {
+            keys.sustain = true;
+        }
+        // console.log(keys.sustain);
+        audio.playNotes(e.key);
+        // console.log(e.code);
     }
-    console.log(keys.sustain);
-    audio.playNotes(e.key);
-    console.log(e.code);
-    
 })
 
 
