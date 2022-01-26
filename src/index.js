@@ -1,9 +1,10 @@
 
-import {canvas, keyboardKeys, createGlitter, animate} from './scripts/canvas'
+import {canvas, keyboardKeys, createShape, animate} from './scripts/canvas'
 import {Audio, keys} from './scripts/audio'
 
 const modal = document.getElementById('welcome');
 const closeModal = document.getElementsByClassName('close')[0];
+const openModal = document.getElementsByClassName('open')[0];
 const anyKey = document.getElementById('anyKey');
 
 // working on touch screen functionality
@@ -29,7 +30,7 @@ const anyKey = document.getElementById('anyKey');
 //     // up-down (0 - height (higher on page = lower in number))
 //     keyboardKeys.y = e.clientY;
 
-//     createGlitter(color);
+//     createShape(color);
 // }
 
 // function handleEnd() {
@@ -60,6 +61,10 @@ closeModal.onclick = function() {
     modal.style.display = 'none';
 
 }
+openModal.onclick = function() {
+    modal.style.display = 'block';
+
+}
 
 window.onclick = function(e) {
     if (e.target === modal) {
@@ -77,8 +82,8 @@ document.addEventListener('keydown', (e) => {
     let color = 'pink'
     // assign x, y coordinates and color based on frequency of note 
     if (audio.notes[e.key] > 879) {
-        console.log(canvas.height)
-        console.log(canvas.width)
+        // console.log(canvas.height)
+        // console.log(canvas.width)
         // random number between canvas.width/canvas.height and canvas.width
         keyboardKeys.x = Math.random() * ((canvas.width - canvas.width) - (canvas.width)) + (canvas.width);
         keyboardKeys.y = Math.random() * (canvas.height - 400 - (canvas.height - canvas.height)) + (canvas.height - canvas.height);
@@ -93,7 +98,7 @@ document.addEventListener('keydown', (e) => {
         color = colorAssignment(audio.notes[e.key]);
     }
     
-    createGlitter(color);   
+    createShape(color);   
 })
 
 

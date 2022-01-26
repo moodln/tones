@@ -5,7 +5,7 @@ let ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth - 60;
 canvas.height = window.innerHeight - 60;
 
-let glittery = [];
+let shapes = [];
 let backgroundColor = getComputedStyle(canvas).backgroundColor;
 
 // set keyboardKeys to undefined to begin with, will change value in index.js eventListener
@@ -14,7 +14,7 @@ const keyboardKeys = {
     y: undefined
 }
 
-class Glitter {
+class Shape {
     constructor(color) {
         this.x = keyboardKeys.x;
         this.y = keyboardKeys.y;
@@ -48,20 +48,20 @@ class Glitter {
 }
 
 // create instances of circle to later call methods on (allows for the option to have bursts)
-function createGlitter(color) {
-    glittery.push(new Glitter(color));
+function createShape(color) {
+    shapes.push(new Shape(color));
 }
 
-function handleGlitter() {
-    for (let i = 0; i < glittery.length; i++) {
-        glittery[i].update();
-        glittery[i].draw();
+function handleShapes() {
+    for (let i = 0; i < shapes.length; i++) {
+        shapes[i].update();
+        shapes[i].draw();
     }
 }
 
 function animate() {
     
-    handleGlitter();
+    handleShapes();
 
     requestAnimationFrame(animate);
 }
@@ -76,45 +76,45 @@ function adjustColor(color) {
 
     if (color !== backgroundColor) {
     // set variables pointing to different rgb values of circle color
-    let glitterColor = color.slice(4, color.length - 1);
-    let colorNumbers = glitterColor.split(', ');
-    let glitterRed = parseInt(colorNumbers[0]);
-    let glitterGreen = parseInt(colorNumbers[1]);
-    let glitterBlue = parseInt(colorNumbers[2]);
+    let shapeColor = color.slice(4, color.length - 1);
+    let colorNumbers = shapeColor.split(', ');
+    let shapeRed = parseInt(colorNumbers[0]);
+    let shapeGreen = parseInt(colorNumbers[1]);
+    let shapeBlue = parseInt(colorNumbers[2]);
     
     // increase or decrease color of circle, until color of circle becomes background color 
-    while (glitterRed !== backgroundRed || glitterGreen !== backgroundGreen || glitterBlue !== backgroundBlue) {
-        if (glitterRed > backgroundRed) {
-            glitterRed -= 1;
-        } else if (glitterRed < backgroundRed) {
-            glitterRed += 1;
+    while (shapeRed !== backgroundRed || shapeGreen !== backgroundGreen || shapeBlue !== backgroundBlue) {
+        if (shapeRed > backgroundRed) {
+            shapeRed -= 1;
+        } else if (shapeRed < backgroundRed) {
+            shapeRed += 1;
         } else {
-            glitterRed;
+            shapeRed;
         }
-        if (glitterGreen > backgroundGreen) {
-            glitterGreen -= 1;
-        } else if (glitterGreen < backgroundGreen) {
-            glitterGreen += 1;
+        if (shapeGreen > backgroundGreen) {
+            shapeGreen -= 1;
+        } else if (shapeGreen < backgroundGreen) {
+            shapeGreen += 1;
         } else {
-            glitterGreen;
+            shapeGreen;
         }
-        if (glitterBlue > backgroundBlue) {
-            glitterBlue -= 1;
-        } else if (glitterBlue < backgroundBlue) {
-            glitterBlue += 1;
+        if (shapeBlue > backgroundBlue) {
+            shapeBlue -= 1;
+        } else if (shapeBlue < backgroundBlue) {
+            shapeBlue += 1;
         } else {
-            glitterBlue; 
+            shapeBlue; 
         }
 
-        color = `rgb(${glitterRed}, ${glitterGreen}, ${glitterBlue})`;
+        color = `rgb(${shapeRed}, ${shapeGreen}, ${shapeBlue})`;
         return color;
     }
-    // decluttering the glittery array
+    // decluttering the shapey array
     } else {
-        if (glittery.length > 50 && glittery.slice(-1)[0].color === backgroundColor) {
-            glittery.splice(0, 1);
-        } else if (glittery.length >= 75 && glittery.slice(-1)[0].color === backgroundColor){
-            glittery.splice(0, 1);
+        if (shapes.length > 50 && shapes.slice(-1)[0].color === backgroundColor) {
+            shapes.splice(0, 1);
+        } else if (shapes.length >= 75 && shapes.slice(-1)[0].color === backgroundColor){
+            shapes.splice(0, 1);
         }
         return color;
     }
@@ -124,4 +124,4 @@ function adjustColor(color) {
 
 
 
-export {canvas, keyboardKeys, createGlitter, animate}
+export {canvas, keyboardKeys, createShape, animate}
