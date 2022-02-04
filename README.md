@@ -48,7 +48,7 @@ Users are able to use their computer keyboard to create sounds. With each keyboa
 
 <img width="833" alt="Screen Shot 2022-02-04 at 1 03 41 PM" src="https://user-images.githubusercontent.com/88460822/152580181-9ac0ee9b-be21-4842-b464-4bd3723f7c0d.png">
 
-I wanted to create the sounds in the same way that synthesizers are built to create different sounds. I researched how sounds are created through modifying frequency, pitch, oscillation, and gain. I was able to incorporate these features through the use of Web Audio API, which provides an AudioContext within which you can modify the way each sound is formed. I was able to find a table that layed out all frequencies for an equal-tempered scale, and decided to omit sharp and flat notes in order to produce a unique user-experience. 
+I wanted to create the sounds in the same way that synthesizers are built to create sounds. I researched how sounds are created through modifying frequency, pitch, oscillation, and gain. I was able to incorporate these features through the use of Web Audio API, which provides an AudioContext within which you can modify the way each sound is formed. I was able to find a table that layed out all frequencies for an equal-tempered scale, and decided to omit sharp and flat notes in order to produce a unique user-experience. 
 
 #### **CHALLENGE:**
 I attached event listeners to respond to keydown events - every time a user presses a certain key on their keyboard, a sound would play. This worked for a little while; but after around 6 seconds of pressing keys, something would happen that made the sound stop - the keys wouldn't produce sound for about half a second, only to then start working again.
