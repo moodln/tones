@@ -1,4 +1,5 @@
-![Screen Shot 2022-02-04 at 12 21 10 PM](https://user-images.githubusercontent.com/88460822/152574009-e981f590-c628-442e-b325-cf086aca4c2c.png)
+<img width="280" alt="Screen Shot 2022-02-04 at 12 26 28 PM" src="https://user-images.githubusercontent.com/88460822/152574728-bf93a4e9-b919-45e9-8912-ac3916ba42b5.png">
+
 
 
 <a href="https://moodln.github.io/tones/">Live site!</a>
