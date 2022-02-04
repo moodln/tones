@@ -59,7 +59,7 @@ I discovered that I had been creating too many AudioContext instances. I initial
 <p align="center">
     <img src="https://user-images.githubusercontent.com/88460822/152590902-16677691-9e11-4936-84bf-6f5f6a9c3e18.png"
           align="middle" height="auto" width="auto" />
- <br>
+ <br><p></p>
     <img src="https://user-images.githubusercontent.com/88460822/152590990-32afae93-7521-4e45-aa90-e329c1a99663.png"
          align="middle" width="auto" height="auto" />
 </p>
