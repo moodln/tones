@@ -7,7 +7,7 @@
 
 ### Table of Contents
 - [Overview](#overview)
-- [Functionality & MVPs](#functionality & mvps)
+- [Functionality & MVPs](#functionality-and-mvps)
 - [Core Features & Technical Challenges](#core-features-and-technical-challenges)
 - [Future Directions](#future-directions)
 
