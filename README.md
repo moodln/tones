@@ -54,7 +54,7 @@ I wanted to create the sounds in the same way that synthesizers are built to cre
 I attached event listeners to respond to keydown events - every time a user presses a certain key on their keyboard, a sound would play. This worked for a little while; but after around 6 seconds of pressing keys, something would happen that made the sound stop - the keys wouldn't produce sound for about half a second, only to then start working again.
 
 #### **SOLUTION:**
-I discovered that I had been creating too many AudioContext instances. I initially set the AudioContext instance as a property of my Audio class - which resulted in creating a new AudioContext instance each time a key was pressed. In order to fix this, I had to create a single AudioContext instance and access it globally. From there I could do whatever I needed to do with each AudioContext instance. 
+I discovered that I had been creating too many AudioContext instances. I initially set the AudioContext instance as a property of my Audio class - which resulted in creating a new AudioContext instance each time a key was pressed. In order to fix this, I had to create a single AudioContext instance and access it globally. From there I could do whatever I needed to do with each Audio instance. 
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/88460822/152590902-16677691-9e11-4936-84bf-6f5f6a9c3e18.png"
