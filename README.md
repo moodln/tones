@@ -1,8 +1,22 @@
-# tones
+![Screen Shot 2022-02-04 at 12 21 10 PM](https://user-images.githubusercontent.com/88460822/152574009-e981f590-c628-442e-b325-cf086aca4c2c.png)
+
+
+<a href="https://moodln.github.io/tones/">Live site!</a>
+
+### Table of Contents
+- [Overview](#overview)
+- [Functionality & MVPs](#functionality & mvps)
+- [Core Features & Technical Challenges](#core-features-and-technical-challenges)
+- [Future Directions](#future-directions)
+
+
+# Overview
 Tones is an interactive application that creates a synesthetic experience for the user. The user is invited to use their keyboard to create different sounds, resembling how they might use a piano. Once sound is produced, an associated color will appear on the screen: warmer colors for higher notes, and cooler colors for lower notes. The colors will dance on the screen as the user plays. 
 
 Bonus features include options for the user to record what they've created, as well as choosing between different color schemes and patterns.  
- 
+
+ ![Screen Shot 2022-02-04 at 12 25 31 PM](https://user-images.githubusercontent.com/88460822/152574568-ee2e3566-bf35-4f4f-9a2f-f9569fb5ebfb.png)
+
 # Functionality & MVPs
 
 With tones, users will be able to:
