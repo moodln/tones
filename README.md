@@ -56,10 +56,13 @@ I attached event listeners to respond to keydown events - every time a user pres
 #### **SOLUTION:**
 I discovered that I had been creating too many AudioContext instances. I initially had set the AudioContext instance as a property of my Audio class - which resulted in creating a new AudioContext instance each time a key was pressed. In order to fix this, I had to create a single AudioContext instance and access it globally. From there I could do whatever I needed to do with each AudioContext instance. 
 
-![Screen Shot 2022-02-04 at 2 27 05 PM](https://user-images.githubusercontent.com/88460822/152590902-16677691-9e11-4936-84bf-6f5f6a9c3e18.png)
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/88460822/152590902-16677691-9e11-4936-84bf-6f5f6a9c3e18.png"
+          align="middle" height="350px" width="auto" />
 
-![Screen Shot 2022-02-04 at 2 27 47 PM](https://user-images.githubusercontent.com/88460822/152590990-32afae93-7521-4e45-aa90-e329c1a99663.png)
-
+    <img src="https://user-images.githubusercontent.com/88460822/152590990-32afae93-7521-4e45-aa90-e329c1a99663.png"
+         align="middle" height="350px" width="auto" />
+</p>
 
 # Future Directions 
 
