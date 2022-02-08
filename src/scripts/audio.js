@@ -1,5 +1,5 @@
 // instantiate web audio api object 
-let audioContext = new AudioContext();
+const audioContext = new AudioContext();
 let keys = {
     sustain: false
 }
