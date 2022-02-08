@@ -103,7 +103,7 @@ class Audio {
 
                     oscillator.start(0);
 
-                    // tone will play for 5 seconds 
+                    // tone will play for 6 seconds 
                     oscillator.stop(audioContext.currentTime + 6)
 
                 }
